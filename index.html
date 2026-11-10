@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A browser-based road image classifier that estimates whether an uploaded image contains a pothole."
+    />
+    <title>RoadScan — Pothole Image Classifier</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="RoadScan home">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span>
+            <strong>RoadScan</strong>
+            <small>Image Classification Lab</small>
+          </span>
+        </a>
+        <div class="model-status" id="model-status" role="status">
+          <span class="status-dot"></span>
+          <span>Loading model…</span>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Pothole / No Pothole</p>
+            <h1 id="page-title">Inspect a road image in seconds.</h1>
+            <p class="lede">
+              Choose or drop a road photo. The trained classroom model analyzes
+              the image locally in your browser and returns a two-class estimate.
+            </p>
+            <div class="privacy-note">
+              <span aria-hidden="true">●</span>
+              Your image stays on this device. Nothing is uploaded.
+            </div>
+          </div>
+          <div class="hero-index" aria-label="Project summary">
+            <span>MODEL</span>
+            <strong>Logistic<br />Regression</strong>
+            <span>INPUT</span>
+            <strong>Road<br />Image</strong>
+            <span>OUTPUT</span>
+            <strong>2<br />Classes</strong>
+          </div>
+        </section>
+
+        <section class="workspace" aria-label="Pothole classifier">
+          <article class="panel input-panel">
+            <div class="panel-heading">
+              <span class="step">01</span>
+              <div>
+                <p>Input</p>
+                <h2>Select a road image</h2>
+              </div>
+              <button class="text-button" id="reset-button" type="button" hidden>Reset</button>
+            </div>
+
+            <label class="drop-zone" id="drop-zone" for="file-input">
+              <input id="file-input" type="file" accept="image/*" />
+              <img id="preview-image" alt="Selected road image preview" hidden />
+              <span class="drop-content" id="drop-content">
+                <span class="upload-icon" aria-hidden="true">
+                  <span></span>
+                </span>
+                <strong>Drop a road photo here</strong>
+                <span>or click to browse your device</span>
+                <small>JPG, PNG, WEBP, or another browser-supported image</small>
+              </span>
+              <span class="scan-line" aria-hidden="true"></span>
+            </label>
+
+            <div class="sample-row">
+              <span>Try a supplied sample</span>
+              <div>
+                <button class="sample-button" type="button" data-sample="sample_inputs/sample_pothole.jpg">
+                  Pothole sample
+                </button>
+                <button class="sample-button" type="button" data-sample="sample_inputs/sample_no_pothole.jpg">
+                  Clear-road sample
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel result-panel" id="result-panel" aria-live="polite">
+            <div class="panel-heading">
+              <span class="step">02</span>
+              <div>
+                <p>Result</p>
+                <h2>Model estimate</h2>
+              </div>
+            </div>
+
+            <div class="empty-result" id="empty-result">
+              <span class="road-symbol" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </span>
+              <strong>Waiting for an image</strong>
+              <p>Your prediction and confidence breakdown will appear here.</p>
+            </div>
+
+            <div class="prediction" id="prediction" hidden>
+              <div class="verdict-row">
+                <div>
+                  <p class="micro-label">Model verdict</p>
+                  <h3 id="verdict">—</h3>
+                  <p class="file-name" id="file-name"></p>
+                </div>
+                <div class="confidence-ring" id="confidence-ring">
+                  <div>
+                    <strong id="confidence-value">0%</strong>
+                    <span>confidence</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="probabilities">
+                <div class="probability-row">
+                  <div><span>Pothole</span><strong id="pothole-value">0%</strong></div>
+                  <div class="bar"><span id="pothole-bar"></span></div>
+                </div>
+                <div class="probability-row">
+                  <div><span>No Pothole</span><strong id="clear-value">0%</strong></div>
+                  <div class="bar"><span id="clear-bar"></span></div>
+                </div>
+              </div>
+
+              <div class="feature-note">
+                <span>What the model analyzed</span>
+                <ul>
+                  <li>16 × 16 grayscale pattern</li>
+                  <li>Horizontal and vertical edges</li>
+                  <li>RGB color distribution</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="method" aria-labelledby="method-title">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2 id="method-title">A compact, explainable pipeline.</h2>
+          </div>
+          <ol>
+            <li><span>01</span><strong>Resize</strong><p>The image becomes a small 16 × 16 working copy.</p></li>
+            <li><span>02</span><strong>Measure</strong><p>Grayscale, edge, and color features are calculated.</p></li>
+            <li><span>03</span><strong>Standardize</strong><p>Features are normalized using the saved training values.</p></li>
+            <li><span>04</span><strong>Classify</strong><p>Logistic regression returns both class probabilities.</p></li>
+          </ol>
+        </section>
+
+        <section class="limitations" aria-labelledby="limitations-title">
+          <p class="eyebrow">Use responsibly</p>
+          <h2 id="limitations-title">A classroom classifier, not a road-safety decision system.</h2>
+          <p>
+            The model classifies the whole image; it does not locate a pothole,
+            measure its size, or assess road safety. Unusual lighting, shadows,
+            wet pavement, and unfamiliar road surfaces can affect its estimate.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>Simple Pothole Image Classifier</span>
+        <a href="https://github.com/Jester-Penlza/Simple-pothole-classifier-">View source on GitHub</a>
+      </footer>
+    </div>
+  </body>
+</html>

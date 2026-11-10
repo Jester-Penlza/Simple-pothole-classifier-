@@ -4,6 +4,15 @@ This is a small final-output project made with Python and scikit-learn. It answe
 
 > Does this uploaded road image contain a pothole?
 
+## Live browser demo
+
+Open the GitHub Pages version here:
+
+**https://jester-penlza.github.io/Simple-pothole-classifier-/**
+
+The web version runs the exported logistic-regression model directly in the
+browser. Images stay on the visitor's device and are not uploaded.
+
 The output is either **Pothole** or **No Pothole**, with a confidence percentage. It does not locate potholes with bounding boxes and does not use a camera, GPS, maps, or YOLO.
 
 ## Why this fits the course instructions
