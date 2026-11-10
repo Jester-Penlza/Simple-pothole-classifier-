@@ -1,0 +1,13 @@
+image,actual,predicted,pothole_probability,correct
+14_jpg.rf.0059dc266a079c2c4343df8fd01f997b.jpg,Pothole,Pothole,0.9207,True
+17_jpg.rf.065aa90038de2c783654d596f17542c0.jpg,Pothole,Pothole,0.6007,True
+24_jpg.rf.776a224f40bf97c7a76086e4cf877e67.jpg,Pothole,Pothole,0.5335,True
+28_jpg.rf.bf9f0ed28a269e39f852121f5cc025bb.jpg,Pothole,Pothole,0.8601,True
+30_jpg.rf.191c0696f493a5ab78bfebac34cd05e1.jpg,Pothole,Pothole,0.8003,True
+6_jpg.rf.b94e7955dc79d9e130dd81e0becf1fdc.jpg,Pothole,Pothole,0.6122,True
+-10-_jpg.rf.5fca005447f3cfbc3fa9833edf98555a.jpg,No Pothole,No Pothole,0.2969,True
+-11-_jpg.rf.65b76c6b2c42dcb9c26b595a5f905766.jpg,No Pothole,No Pothole,0.0614,True
+-11-_jpg.rf.81610edbefeb5761a93ea062311de55f.jpg,No Pothole,No Pothole,0.1389,True
+-12-_jpg.rf.b9d388844c7a077250e8e4f3dc03f570.jpg,No Pothole,No Pothole,0.1680,True
+-12-_jpg.rf.c36f01c4d4be98f2f969c39375798b25.jpg,No Pothole,Pothole,0.5231,False
+-12-_jpg.rf.d16d865c26069a03314c569f176d4b81.jpg,No Pothole,No Pothole,0.4023,True

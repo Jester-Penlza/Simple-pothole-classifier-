@@ -1,0 +1,142 @@
+{
+  "model": "StandardScaler + LogisticRegression",
+  "decision_threshold": 0.5,
+  "class_names": [
+    "No Pothole",
+    "Pothole"
+  ],
+  "split_counts": {
+    "train": 693,
+    "validation": 128,
+    "test": 129
+  },
+  "train": {
+    "accuracy": 0.9018759018759018,
+    "pothole_precision": 0.7689075630252101,
+    "pothole_recall": 0.9336734693877551,
+    "pothole_f1": 0.8433179723502304,
+    "confusion_matrix": [
+      [
+        442,
+        55
+      ],
+      [
+        13,
+        183
+      ]
+    ],
+    "classification_report": {
+      "No Pothole": {
+        "precision": 0.9714285714285714,
+        "recall": 0.8893360160965795,
+        "f1-score": 0.9285714285714286,
+        "support": 497.0
+      },
+      "Pothole": {
+        "precision": 0.7689075630252101,
+        "recall": 0.9336734693877551,
+        "f1-score": 0.8433179723502304,
+        "support": 196.0
+      },
+      "accuracy": 0.9018759018759018,
+      "macro avg": {
+        "precision": 0.8701680672268908,
+        "recall": 0.9115047427421673,
+        "f1-score": 0.8859447004608295,
+        "support": 693.0
+      },
+      "weighted avg": {
+        "precision": 0.9141499023851964,
+        "recall": 0.9018759018759018,
+        "f1-score": 0.9044593399432108,
+        "support": 693.0
+      }
+    }
+  },
+  "validation": {
+    "accuracy": 0.8125,
+    "pothole_precision": 0.875,
+    "pothole_recall": 0.8333333333333334,
+    "pothole_f1": 0.8536585365853658,
+    "confusion_matrix": [
+      [
+        34,
+        10
+      ],
+      [
+        14,
+        70
+      ]
+    ],
+    "classification_report": {
+      "No Pothole": {
+        "precision": 0.7083333333333334,
+        "recall": 0.7727272727272727,
+        "f1-score": 0.7391304347826086,
+        "support": 44.0
+      },
+      "Pothole": {
+        "precision": 0.875,
+        "recall": 0.8333333333333334,
+        "f1-score": 0.8536585365853658,
+        "support": 84.0
+      },
+      "accuracy": 0.8125,
+      "macro avg": {
+        "precision": 0.7916666666666667,
+        "recall": 0.803030303030303,
+        "f1-score": 0.7963944856839873,
+        "support": 128.0
+      },
+      "weighted avg": {
+        "precision": 0.8177083333333334,
+        "recall": 0.8125,
+        "f1-score": 0.814289501590668,
+        "support": 128.0
+      }
+    }
+  },
+  "test": {
+    "accuracy": 0.8062015503875969,
+    "pothole_precision": 0.9210526315789473,
+    "pothole_recall": 0.7865168539325843,
+    "pothole_f1": 0.8484848484848485,
+    "confusion_matrix": [
+      [
+        34,
+        6
+      ],
+      [
+        19,
+        70
+      ]
+    ],
+    "classification_report": {
+      "No Pothole": {
+        "precision": 0.6415094339622641,
+        "recall": 0.85,
+        "f1-score": 0.7311827956989247,
+        "support": 40.0
+      },
+      "Pothole": {
+        "precision": 0.9210526315789473,
+        "recall": 0.7865168539325843,
+        "f1-score": 0.8484848484848485,
+        "support": 89.0
+      },
+      "accuracy": 0.8062015503875969,
+      "macro avg": {
+        "precision": 0.7812810327706057,
+        "recall": 0.8182584269662921,
+        "f1-score": 0.7898338220918866,
+        "support": 129.0
+      },
+      "weighted avg": {
+        "precision": 0.8343725703024564,
+        "recall": 0.8062015503875969,
+        "f1-score": 0.8121121189388256,
+        "support": 129.0
+      }
+    }
+  }
+}
